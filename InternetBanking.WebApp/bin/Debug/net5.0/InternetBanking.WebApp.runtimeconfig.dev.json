@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\pupy frias\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\pupy frias\\.nuget\\packages"
+    ]
+  }
+}
