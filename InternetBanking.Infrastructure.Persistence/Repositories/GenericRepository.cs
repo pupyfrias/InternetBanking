@@ -34,9 +34,11 @@ namespace InternetBanking.Core.Applicacion.Intefaces.Repositories
             return await _context.Set<Entity>().FindAsync(Id);
         }
 
-        public async Task UpdateAsync(Entity entity)
+        public async Task UpdateAsync(Entity entity, int Id)
         {
-            _context.Entry(entity).State = EntityState.Modified;
+            Entity entry = await _context.Set<Entity>().FindAsync(Id);
+
+            _context.Entry(entry).CurrentValues.SetValues(entry);
             await _context.SaveChangesAsync();
         }
     }

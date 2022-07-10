@@ -1,37 +1,54 @@
-﻿using InternetBanking.Core.Applicacion.Intefaces.Services;
+﻿using AutoMapper;
+using InternetBanking.Core.Applicacion.Intefaces.Repositories;
+using InternetBanking.Core.Applicacion.Intefaces.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace InternetBanking.Core.Applicacion.Services
 {
-    public class GenericService<Model, ViewModel, SaveViewModel> : IGenericService<Model, ViewModel, SaveViewModel> 
-        where Model : class 
+    public class GenericService<Entity, ViewModel, SaveViewModel> : IGenericService<Entity, ViewModel, SaveViewModel> 
+        where Entity : class 
         where ViewModel : class
         where SaveViewModel : class
     {
-        public Task Add(SaveViewModel vm)
+
+        private readonly IGenericRepository<Entity> _repository;
+        private readonly IMapper _mapper;
+
+        public GenericService(IGenericRepository<Entity> repository, IMapper mapper)
         {
-            throw new System.NotImplementedException();
+            _repository = repository;
+            _mapper = mapper;
         }
 
-        public Task Delete(ViewModel VM)
+        public async Task Add(SaveViewModel vm)
         {
-            throw new System.NotImplementedException();
+            Entity entity = _mapper.Map<Entity>(vm);
+            await _repository.AddAsync(entity);
         }
 
-        public Task<List<ViewModel>> GetAll()
+        public async Task Delete(ViewModel vm)
         {
-            throw new System.NotImplementedException();
+            Entity entity = _mapper.Map<Entity>(vm);
+            await _repository.DeleteAsync(entity);
         }
 
-        public Task<ViewModel> GetById(int id)
+        public async Task<List<ViewModel>> GetAll()
         {
-            throw new System.NotImplementedException();
+            var entityList = await _repository.GetAllAsync();
+            return _mapper.Map<List<ViewModel>>(entityList);
         }
 
-        public Task Upadate(SaveViewModel vm)
+        public async Task<ViewModel> GetById(int id)
         {
-            throw new System.NotImplementedException();
+            Entity entity = await _repository.GetByIdAsync(id);
+            return _mapper.Map<ViewModel>(entity);
+        }
+
+        public async Task Upadate(SaveViewModel vm, int Id)
+        {
+            Entity entity = _mapper.Map<Entity>(vm);
+            await _repository.UpdateAsync(entity, Id);
         }
     }
 }
