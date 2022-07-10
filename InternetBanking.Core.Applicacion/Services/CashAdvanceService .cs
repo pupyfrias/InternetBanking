@@ -1,0 +1,10 @@
+﻿using InternetBanking.Core.Applicacion.Intefaces.Services;
+using InternetBanking.Core.Applicacion.ViewsModels.CashAdvance;
+using InternetBanking.Core.Domain.Entities;
+
+namespace InternetBanking.Core.Applicacion.Services
+{
+    public class CashAdvanceService : GenericService<CashAdvance, CashAdvanceViewModel, CashAdvanceSaveViewModel>, ICashAdvanceService
+    {
+    }
+}

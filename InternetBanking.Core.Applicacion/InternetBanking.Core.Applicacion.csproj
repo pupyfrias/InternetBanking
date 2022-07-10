@@ -6,9 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="Intefaces\Services\" />
-    <Folder Include="Services\" />
-    <Folder Include="ViewsModels\" />
   </ItemGroup>
 
   <ItemGroup>

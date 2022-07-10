@@ -20,6 +20,7 @@ namespace InternetBanking.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddInfrastructurePersitence(Configuration);
+            services.AddApplicationLayer(Configuration);
             services.AddControllersWithViews();
         }
 
