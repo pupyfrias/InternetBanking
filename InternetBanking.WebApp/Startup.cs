@@ -20,8 +20,10 @@ namespace InternetBanking.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddInfrastructurePersitence(Configuration);
+            services.AddInfrastructureIdentity(Configuration);
             services.AddApplicationLayer(Configuration);
             services.AddControllersWithViews();
         }
@@ -43,7 +45,7 @@ namespace InternetBanking.WebApp
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
