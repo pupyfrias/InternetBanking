@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetBanking.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetBanking.WebApp", "InternetBanking.WebApp\InternetBanking.WebApp.csproj", "{62ACE6C3-96AA-4D31-B8C0-6397EDD5BD38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetBanking.Infrastructure.Identity", "InternetBanking.Infrastructure.Identity\InternetBanking.Infrastructure.Identity.csproj", "{CAAA06A3-F6D9-40DF-816F-75DB40F46360}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetBanking.Infrastructure.Identity", "InternetBanking.Infrastructure.Identity\InternetBanking.Infrastructure.Identity.csproj", "{CAAA06A3-F6D9-40DF-816F-75DB40F46360}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetBanking.Infrastructure.Shared", "InternetBanking.Infrastructure.Shared\InternetBanking.Infrastructure.Shared.csproj", "{AA355426-4293-4D1E-BAE3-DA8DDDA49936}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{CAAA06A3-F6D9-40DF-816F-75DB40F46360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAAA06A3-F6D9-40DF-816F-75DB40F46360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAAA06A3-F6D9-40DF-816F-75DB40F46360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA355426-4293-4D1E-BAE3-DA8DDDA49936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA355426-4293-4D1E-BAE3-DA8DDDA49936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA355426-4293-4D1E-BAE3-DA8DDDA49936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA355426-4293-4D1E-BAE3-DA8DDDA49936}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{3E32D1BE-4B9A-45CE-BFD2-1F5772E05CE6} = {84DDD989-4545-4927-B128-95E15C16E124}
 		{62ACE6C3-96AA-4D31-B8C0-6397EDD5BD38} = {A7FC79D1-6B0C-4D54-9347-F2682BE02121}
 		{CAAA06A3-F6D9-40DF-816F-75DB40F46360} = {84DDD989-4545-4927-B128-95E15C16E124}
+		{AA355426-4293-4D1E-BAE3-DA8DDDA49936} = {84DDD989-4545-4927-B128-95E15C16E124}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {574F5288-0910-4946-8308-54FF67115A61}

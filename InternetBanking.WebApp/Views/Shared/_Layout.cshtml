@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@using InternetBanking.Core.Applicacion.Helpers;
+@using InternetBanking.Core.Applicacion.Dtos.Account;
+@inject IHttpContextAccessor httpContext;
+@{ 
+
+    AuthentificationResponse user = httpContext.HttpContext.Session.Get<AuthentificationResponse>("user");
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />

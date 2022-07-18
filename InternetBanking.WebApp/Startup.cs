@@ -1,6 +1,8 @@
 using InternetBanking.Infrastructure.Persistence;
+using InternetBanking.Infrastructure.Shared;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,12 +22,13 @@ namespace InternetBanking.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddSession();
             services.AddInfrastructurePersitence(Configuration);
             services.AddInfrastructureIdentity(Configuration);
             services.AddApplicationLayer(Configuration);
             services.AddControllersWithViews();
+            services.AddInfrastructureShared(Configuration);
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +44,7 @@ namespace InternetBanking.WebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -52,7 +56,7 @@ namespace InternetBanking.WebApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=User}/{action=Login}");
             });
         }
     }

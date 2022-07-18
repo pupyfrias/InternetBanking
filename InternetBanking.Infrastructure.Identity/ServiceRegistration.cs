@@ -1,5 +1,6 @@
 ﻿using InternetBanking.Infrastructure.Identity.Contexts;
 using InternetBanking.Infrastructure.Identity.Models;
+using InternetBanking.Infrastructure.Identity.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,11 @@ namespace InternetBanking.Infrastructure.Persistence
             service.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityContext>()
                 .AddDefaultTokenProviders();
+            service.AddAuthentication();
+            #endregion
+
+            #region Service
+            service.AddTransient<IUserAccountService, UserAccountService>();
             #endregion
         }
     }

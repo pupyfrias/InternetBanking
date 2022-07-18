@@ -2,6 +2,7 @@
 using InternetBanking.Core.Applicacion.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace InternetBanking.Infrastructure.Persistence
 {
@@ -10,6 +11,7 @@ namespace InternetBanking.Infrastructure.Persistence
         public static void AddApplicationLayer(this IServiceCollection service, IConfiguration configuration)
         {
             #region Services
+            service.AddAutoMapper(Assembly.GetExecutingAssembly());
             service.AddTransient(typeof(IGenericService<,,>), typeof(GenericService<,,>));
             service.AddTransient<IAccountService, AccountService>();
             service.AddTransient<IBeneficiaryService, BeneficiaryService>();

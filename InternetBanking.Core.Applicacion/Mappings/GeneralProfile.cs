@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using InternetBanking.Core.Applicacion.Dtos.Account;
 using InternetBanking.Core.Applicacion.ViewsModels.Account;
 using InternetBanking.Core.Applicacion.ViewsModels.Beneficiary;
 using InternetBanking.Core.Applicacion.ViewsModels.CashAdvance;
@@ -9,6 +10,7 @@ using InternetBanking.Core.Applicacion.ViewsModels.Payment;
 using InternetBanking.Core.Applicacion.ViewsModels.Product;
 using InternetBanking.Core.Applicacion.ViewsModels.ProductType;
 using InternetBanking.Core.Applicacion.ViewsModels.Transaction;
+using InternetBanking.Core.Applicacion.ViewsModels.User;
 using InternetBanking.Core.Domain.Entities;
 
 namespace InternetBanking.Core.Applicacion.Mappings
@@ -91,7 +93,7 @@ namespace InternetBanking.Core.Applicacion.Mappings
                 .ForMember(dest => dest.LastModified, opt => opt.Ignore())
                 .ForMember(dest => dest.LastModifiedBy, opt => opt.Ignore());
 
-            CreateMap<Client, ClientSaveViewModel>()
+            CreateMap<Client, UserSaveViewModel>()
                 .ReverseMap()
                 .ForMember(dest => dest.Created, opt => opt.Ignore())
                 .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())
@@ -217,14 +219,37 @@ namespace InternetBanking.Core.Applicacion.Mappings
 
             CreateMap<Transaction, TransactionSaveViewModel>()
                 .ReverseMap()
+                .ForMember(dest => dest.Client, opt => opt.Ignore())
                 .ForMember(dest => dest.Created, opt => opt.Ignore())
                 .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())
+                .ForMember(dest => dest.DestinationAccount, opt => opt.Ignore())
                 .ForMember(dest => dest.LastModified, opt => opt.Ignore())
                 .ForMember(dest => dest.LastModifiedBy, opt => opt.Ignore())
-                .ForMember(dest => dest.Product, opt => opt.Ignore())
-                .ForMember(dest => dest.Client, opt => opt.Ignore())
-                .ForMember(dest => dest.DestinationAccount, opt => opt.Ignore())
-                .ForMember(dest => dest.OriginAccount, opt => opt.Ignore());
+                .ForMember(dest => dest.OriginAccount, opt => opt.Ignore())
+                .ForMember(dest => dest.Product, opt => opt.Ignore());
+            #endregion
+
+            #region User
+            CreateMap<AuthentificationRequest, LoginViewModel>()
+                .ForMember(dest => dest.HasError, opt => opt.Ignore())
+                .ForMember(dest => dest.Error, opt => opt.Ignore())
+                .ReverseMap();
+
+            CreateMap<RegisterRequest, UserSaveViewModel>()
+                .ForMember(dest => dest.HasError, opt => opt.Ignore())
+                .ForMember(dest => dest.Error, opt => opt.Ignore())
+                .ReverseMap();
+
+            CreateMap<ForgotPasswordRequest, ForgotPasswordSaveViewModel>()
+              .ForMember(dest => dest.HasError, opt => opt.Ignore())
+              .ForMember(dest => dest.Error, opt => opt.Ignore())
+              .ReverseMap();
+
+            CreateMap<ResetPasswordRequest, ResetPasswordSaveViewModel>()
+              .ForMember(dest => dest.HasError, opt => opt.Ignore())
+              .ForMember(dest => dest.Error, opt => opt.Ignore())
+              .ReverseMap();
+
             #endregion
         }
     }

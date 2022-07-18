@@ -13,12 +13,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\InternetBanking.Core.Applicacion\InternetBanking.Core.Applicacion.csproj" />
     <ProjectReference Include="..\InternetBanking.Infrastructure.Identity\InternetBanking.Infrastructure.Identity.csproj" />
     <ProjectReference Include="..\InternetBanking.Infrastructure.Persistence\InternetBanking.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\InternetBanking.Infrastructure.Shared\InternetBanking.Infrastructure.Shared.csproj" />
   </ItemGroup>
 
 </Project>
